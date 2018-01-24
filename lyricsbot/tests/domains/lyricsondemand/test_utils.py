@@ -1,30 +1,33 @@
 """
-Tests for custom implementation of built-in Python methods called `lib`.
+Tests.
 """
 import unittest
 
 from ddt import ddt, data, unpack
 
-from lyricsbot.domain.azlyrics.utils import (
+from lyricsbot.domain.lyricsondemand.utils import (
     remove_punctuation_symbols,
-    suitable_azlyrics_url_parameters,
+    suitable_url_parameters
 )
 
 
 @ddt
 class TestURL(unittest.TestCase):
     """
-    Test overall split cases.
+    Test for verifying removing punctuation symbols.
     """
 
     @data(
-        ('Florence + The Machine', 'Florence  The Machine'),
+        ('Childish Gambino', 'Childish Gambino'),
+        ('Redbone', 'Redbone'),
+        ('Florence + The Machine', 'Florence and The Machine'),
         ('Rabbit Heart (Raise It Up)', 'Rabbit Heart Raise It Up'),
     )
     @unpack
     def test_remove_punctuation_symbols(self, string, expected):
         """
-        Verify the URL format.
+        Case: remove all punctuation symbols in string.
+        Expected: string without symbols with spaces.
         """
         result = remove_punctuation_symbols(string)
         self.assertEqual(expected, result)
@@ -34,11 +37,12 @@ class TestURL(unittest.TestCase):
         ('Rabbit Heart Raise It Up', 'rabbitheartraiseitup'),
     )
     @unpack
-    def test_suitable_azlyrics_url_parameters(self, string, expected):
+    def test_suitable_url_parameters(self, string, expected):
         """
-        Verify the URL format.
+        Case: remove all spaces in string.
+        Expected: string without spaces.
         """
-        result = suitable_azlyrics_url_parameters(string)
+        result = suitable_url_parameters(string)
         self.assertEqual(expected, result)
 
 

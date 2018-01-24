@@ -11,7 +11,7 @@ from lyricsbot.lib import join, split
 @ddt
 class TestLib(unittest.TestCase):
     """
-    Test overall split cases.
+    Test of built-in Python methods.
     """
 
     @data(
