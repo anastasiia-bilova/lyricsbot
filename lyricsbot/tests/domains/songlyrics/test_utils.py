@@ -5,7 +5,7 @@ import unittest
 
 from ddt import ddt, data, unpack
 
-from lyricsbot.domain.songlyrics.utils import (
+from lyricsbot.domains.songlyrics.utils import (
     remove_punctuation_symbols,
     suitable_url_parameters
 )

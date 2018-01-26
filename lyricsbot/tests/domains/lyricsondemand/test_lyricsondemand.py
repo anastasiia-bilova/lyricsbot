@@ -5,7 +5,7 @@ import unittest
 
 from ddt import ddt, data, unpack
 
-from lyricsbot.domain.lyricsondemand import (
+from lyricsbot.domains.lyricsondemand import (
     format_request_data_url,
     parse_lyrics
 )

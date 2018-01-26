@@ -5,12 +5,12 @@ from bs4 import BeautifulSoup
 
 import requests
 
-from lyricsbot.domain.songlyrics.utils import (
+from lyricsbot.domains.songlyrics.utils import (
     remove_punctuation_symbols,
     suitable_url_parameters
 )
 
-from lyricsbot.domain.songlyrics.config import SONGLYRICS_DOWNLOAD_URL
+from lyricsbot.domains.songlyrics.config import SONGLYRICS_DOWNLOAD_URL
 
 
 def format_request_data_url(author_song, title_song):
