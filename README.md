@@ -30,4 +30,3 @@ And running all linting tools together to check code quality
 ```
 flake8 lyricsbot && pylint —rcfile=setup.cfg lyricsbot && pycodestyle lyricsbot
 ```
-
