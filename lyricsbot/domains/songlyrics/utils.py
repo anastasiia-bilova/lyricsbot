@@ -11,7 +11,8 @@ def suitable_url_parameters(url_parameter):
     Data-in is a string with spaces or without any punctuation symbol.
 
 
-    Return a string with hyphen.
+    Return a string with hyphen and a copy of the string with all the
+    cased characters converted to lowercase.
     """
     return join(split(url_parameter, ' '), '-').lower()
 
