@@ -7,15 +7,15 @@ Lyricsbot is a Telegram bot, that allow user to get text of song.
 
 # Getting started
 
-## Development
-
 Install requirements on your environment:
 
 ```
 pip3 install -r requirements.txt
 ```
 
-Also good to install develop requirements and check your code with linters:
+## Development
+
+Good to install develop requirements and check your code with linters:
 
 ```
 pip3 install -r requrements-dev.txt
