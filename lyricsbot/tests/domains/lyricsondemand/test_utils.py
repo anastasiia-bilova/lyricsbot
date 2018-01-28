@@ -7,14 +7,14 @@ from ddt import ddt, data, unpack
 
 from lyricsbot.domains.lyricsondemand.utils import (
     remove_punctuation_symbols,
-    suitable_url_parameters
+    make_suitable_url_parameters
 )
 
 
 @ddt
 class TestURL(unittest.TestCase):
     """
-    Test for verifying removing punctuation symbols.
+    Test for verify removing punctuation symbols.
     """
 
     @data(
@@ -42,9 +42,5 @@ class TestURL(unittest.TestCase):
         Case: remove all spaces in string.
         Expected: string without spaces.
         """
-        result = suitable_url_parameters(string)
+        result = make_suitable_url_parameters(string)
         self.assertEqual(expected, result)
-
-
-if __name__ == '__main__':
-    unittest.main()

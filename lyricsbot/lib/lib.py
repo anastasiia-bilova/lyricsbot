@@ -1,5 +1,5 @@
 """
-Custom implementation of built-in Python method.
+Custom implementation of built-in Python methods.
 """
 
 
@@ -23,7 +23,6 @@ def split(string, separator):
     """
     Return a list of the words in the string, using separator as the delimiter string.
     """
-
     if separator == '':
         raise ValueError('Empty separator')
 
@@ -31,7 +30,9 @@ def split(string, separator):
         separator = ' '
 
     sequence, word = [], ''
+
     string += separator
+
     for letter in string:
         if letter is not separator:
             word += letter

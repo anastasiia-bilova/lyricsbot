@@ -11,7 +11,7 @@ from lyricsbot.lib import join, split
 @ddt
 class TestLib(unittest.TestCase):
     """
-    Test of built-in Python methods.
+    Test for custom implementation built-in Python methods.
     """
 
     @data(
@@ -61,7 +61,3 @@ class TestLib(unittest.TestCase):
         response = split(string_to_split, symbol_by_split)
 
         self.assertEqual(expected, response)
-
-
-if __name__ == '__main__':
-    unittest.main()
