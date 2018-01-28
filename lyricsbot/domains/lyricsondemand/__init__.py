@@ -6,6 +6,6 @@ from lyricsbot.domains.lyricsondemand.lyricsondemand import (
     parse_lyrics,
 )
 from lyricsbot.domains.lyricsondemand.utils import (
+    make_suitable_url_parameters,
     remove_punctuation_symbols,
-    make_suitable_url_parameters
 )

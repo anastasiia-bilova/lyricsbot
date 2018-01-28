@@ -1,7 +1,7 @@
 """
 Utils for tests.
 """
-EXPECTED_LYRICSONDEMAND = '''Daylight, I wake up feeling like you won't play right
+EXPECTED_LYRICSONDEMAND = """Daylight, I wake up feeling like you won't play right
 I usually know but now, that shit don't feel right
 It made me put away my pride
 So long, you made a nigga wait for some, so long
@@ -60,9 +60,9 @@ How'd it get...
 How'd it get so scandalous?
 Ooh we get so scandalous
 But stay woke
-But stay woke'''
+But stay woke"""
 
-EXPECTED_SONGLYRICS = '''The looking glass, so shiny and new
+EXPECTED_SONGLYRICS = """The looking glass, so shiny and new
 How quickly the glamor fades
 I start spinning slipping out of time
 Was that the wrong pill to take?
@@ -137,4 +137,4 @@ This is a gift, it comes with a price
 Who is the lamb and who is the knife?
 And Midas is king and he holds me so tight
 And turns me to gold in the sunlight
-This is a gift'''
+This is a gift"""

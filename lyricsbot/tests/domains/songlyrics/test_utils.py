@@ -6,8 +6,8 @@ import unittest
 from ddt import ddt, data, unpack
 
 from lyricsbot.domains.songlyrics.utils import (
+    make_suitable_url_parameters,
     remove_punctuation_symbols,
-    make_suitable_url_parameters
 )
 
 
@@ -26,8 +26,8 @@ class TestURL(unittest.TestCase):
     @unpack
     def test_remove_punctuation_symbols(self, string, expected):
         """
-        Case: remove all punctuation symbols in string.
-        Expected: string without symbols with spaces.
+        Case: should be removed all punctuation symbols in author and title.
+        Expected: author and title without symbols with spaces.
         """
         result = remove_punctuation_symbols(string)
         self.assertEqual(expected, result)
@@ -39,8 +39,8 @@ class TestURL(unittest.TestCase):
     @unpack
     def test_suitable_url_parameters(self, string, expected):
         """
-        Case: remove all spaces in string.
-        Expected: string with hyphen.
+        Case: replace spaces with hyphen in author and title, and formatted there in lowercase.
+        Expected: lowercase string with hyphen.
         """
         result = make_suitable_url_parameters(string)
         self.assertEqual(expected, result)

@@ -6,8 +6,8 @@ from bs4 import BeautifulSoup
 
 from lyricsbot.domains.lyricsondemand.config import LYRICSONDEMAND_DOWNLOAD_URL
 from lyricsbot.domains.lyricsondemand.utils import (
+    make_suitable_url_parameters,
     remove_punctuation_symbols,
-    make_suitable_url_parameters
 )
 
 

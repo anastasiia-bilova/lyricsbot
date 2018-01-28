@@ -1,4 +1,4 @@
 """
-Format URL link for config.
+Config file.
 """
 SONGLYRICS_DOWNLOAD_URL = 'http://www.songlyrics.com/{}/{}-lyrics/'

@@ -5,8 +5,7 @@ Custom implementation of built-in Python methods.
 
 def join(sequence, separator):
     """
-    Return a string which is the concatenation of the strings in iterable.
-    With separator between elements.
+    Return a string concatenation with separator between elements.
     """
     string = ''
 
