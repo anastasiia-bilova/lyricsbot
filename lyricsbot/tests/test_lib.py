@@ -11,24 +11,26 @@ from lyricsbot.lib import join, split
 @ddt
 class TestLib(unittest.TestCase):
     """
-    Test overall split cases.
+    Test for custom implementation built-in Python methods.
     """
 
     @data(
-        (['Game', 'of', 'Thrones'], ' ', 'Game of Thrones'),
-        (['Game', 'of', 'Thrones'], '_', 'Game_of_Thrones')
+        (' ', 'Game of Thrones'),
+        ('_', 'Game_of_Thrones'),
+        ('', 'GameofThrones'),
     )
     @unpack
-    def test_join(self, sequence_to_join, join_separator, expected):
+    def test_join(self, join_separator, expected):
         """
         Test overall join cases.
         """
+        sequence_to_join = ['Game', 'of', 'Thrones']
         response = join(sequence_to_join, join_separator)
         self.assertEqual(expected, response)
 
     @data(
         ('Game of Thrones', ' '),
-        ('Game_of_Thrones', '_')
+        ('Game_of_Thrones', '_'),
     )
     @unpack
     def test_split(self, string_to_split, symbol_by_split):
@@ -59,7 +61,3 @@ class TestLib(unittest.TestCase):
         response = split(string_to_split, symbol_by_split)
 
         self.assertEqual(expected, response)
-
-
-if __name__ == '__main__':
-    unittest.main()
