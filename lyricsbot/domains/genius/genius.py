@@ -4,8 +4,8 @@ Get song lyrics via users' data.
 import requests
 from bs4 import BeautifulSoup
 
-from domains.genius.config import GENIUS_DOWNLOAD_URL
-from domains.genius.utils import (
+from lyricsbot.domains.genius.config import GENIUS_DOWNLOAD_URL
+from lyricsbot.domains.genius.utils import (
     make_suitable_url_parameters,
     remove_punctuation_symbols,
 )

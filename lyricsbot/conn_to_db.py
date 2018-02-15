@@ -3,8 +3,8 @@ Connection to database.
 """
 import psycopg2
 
-from config import URL
-from lyricsbot_utils import parse_url_db
+from lyricsbot.config import URL
+from lyricsbot.lyricsbot_utils import parse_url_db
 
 
 class ConnectionError(Exception):

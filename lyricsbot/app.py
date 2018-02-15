@@ -4,9 +4,11 @@ Custom implementation of Telegram Bot.
 import telebot
 from telebot import types
 from telebot.apihelper import ApiException
+import os
+from flask import Flask, request
 
-from config import TOKEN
-from conn_to_db import (
+from lyricsbot.config import TOKEN
+from lyricsbot.conn_to_db import (
     create_song_data_table,
     create_user_state_table,
     get_author_song,
@@ -18,8 +20,10 @@ from conn_to_db import (
     update_title_song,
     update_user_state,
 )
-from domains.genius.genius import get_song_text
+from lyricsbot.domains.genius.genius import get_song_text
 
+
+server = Flask(__name__)
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -91,6 +95,19 @@ def render_initial_keyboard(message):
                      "If you wanna receive lyrics, press the button and follow the instructions:",
                      reply_markup=keyboard)
 
+
+@server.route("/" + TOKEN, methods=['POST'])
+def getMessage():
+    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    return "!", 200
+
+
+@server.route("/")
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url="https://ancient-dusk-91680.herokuapp.com/" + TOKEN)
+    return "!", 200
+
+
 if __name__ == '__main__':
-    print('Telegram bot called @LyricsBot is running on the address t.me/SearchMyLyricsBot')
-    bot.polling(none_stop=True)
+    server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
