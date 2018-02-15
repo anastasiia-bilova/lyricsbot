@@ -1,9 +1,9 @@
 """
-Helpers for `songlyrics` implementation.
+Helpers for `genius` implementation.
 """
 from string import punctuation
 
-from lyricsbot.lib.lib import join, split
+from lib.lib import join, split
 
 
 def make_suitable_url_parameters(url_parameter):

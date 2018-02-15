@@ -4,12 +4,14 @@ Get song lyrics via users' data.
 import requests
 from bs4 import BeautifulSoup
 
-from lyricsbot.domains.songlyrics.config import SONGLYRICS_DOWNLOAD_URL
-from lyricsbot.domains.songlyrics.utils import (
+from domains.genius.config import GENIUS_DOWNLOAD_URL
+from domains.genius.utils import (
     make_suitable_url_parameters,
     remove_punctuation_symbols,
 )
 
+
+USER_ASK_LYRICS_WITHOUT_PRESSME_BUTTON_TEXT = 'Sorry, we didn\'t mean for that to happen!'
 
 def format_request_data_url(author_song, title_song):
     """
@@ -21,8 +23,11 @@ def format_request_data_url(author_song, title_song):
     formatted_author_song = make_suitable_url_parameters(author_song)
     formatted_title_song = make_suitable_url_parameters(title_song)
 
-    url = SONGLYRICS_DOWNLOAD_URL.format(
-        formatted_author_song, formatted_title_song
+    # url for current site needs author song with only its first character capitalized
+    capitalize_author_song = formatted_author_song.capitalize()
+
+    url = GENIUS_DOWNLOAD_URL.format(
+        capitalize_author_song, formatted_title_song
     )
 
     return url
@@ -34,11 +39,11 @@ def parse_lyrics(url):
     """
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
-    lyrics_raw_content = soup.find_all(attrs={'class': 'songLyricsV14 iComment-text'})
 
-    lyrics_as_list = [text.get_text() for text in lyrics_raw_content]
+    full_lyrics_string = soup.find('p').get_text()
 
-    full_lyrics_string = '\n'.join(lyrics_as_list)
+    if USER_ASK_LYRICS_WITHOUT_PRESSME_BUTTON_TEXT in full_lyrics_string:
+        full_lyrics_string = 'To get song lyrics tap the press me button.'
 
     return full_lyrics_string
 

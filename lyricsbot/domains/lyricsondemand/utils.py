@@ -3,7 +3,7 @@ Helpers for `lyricsondemand` implementation.
 """
 from string import punctuation
 
-from lyricsbot.lib import join, split
+from lyricsbot.lib.lib import join, split
 
 
 def make_suitable_url_parameters(url_parameter):

@@ -14,5 +14,5 @@ before_install:
 script:
 - flake8 lyricsbot
 - pycodestyle lyricsbot
-- pylint —rcfile=setup.cfg lyricsbot
+- pylint lyricsbot
 - python -m unittest discover

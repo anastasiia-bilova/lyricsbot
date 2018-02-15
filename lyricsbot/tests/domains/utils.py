@@ -1,6 +1,60 @@
 """
 Utils for tests.
 """
+EXPECTED_GENIUS = """It's time to commit
+Open on up
+We'll be here all day
+To relieve our ache
+Don't you feel it as well?
+Waiting for the day
+I think you know what's next
+I think you know so
+
+Talk to me
+Tell me all your secrets cause
+Cause I want to be everything you need
+Let's fall in love, I'm working overtime
+Working for the chance to be awake
+
+Been at it for weeks
+Saving on up
+For I'ma to break the bank
+Yeah, there's a dream I'd say
+Can you feel it at all?
+A pressure on your chest
+I know you know what's next
+I think you know so
+
+Talk to me
+Tell me all your secrets cause
+Cause I want to be everything you need
+Let's fall in love, I'm working overtime
+Working for the chance to be awake
+
+Talk to me
+Tell me all your secrets cause
+Cause I want to be everything you need
+Let's fall in love, I'm working overtime
+Working for the chance to be awake
+
+Picture this we're running away
+Leave all this behind us
+One more kiss, we're driving away
+Fueling up inside us
+
+Talk to me
+Tell me all your secrets cause
+Cause I want to be everything you need
+Let's fall in love, I'm working overtime
+Working for the chance to be awake
+
+Talk to me
+Tell me all your secrets cause
+Cause I want to be everything you need
+Don't hesitate another minute
+'Cause I love when you
+Talk to me like that"""
+
 EXPECTED_LYRICSONDEMAND = """Daylight, I wake up feeling like you won't play right
 I usually know but now, that shit don't feel right
 It made me put away my pride
