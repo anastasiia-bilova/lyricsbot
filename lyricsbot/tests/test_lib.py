@@ -5,7 +5,7 @@ import unittest
 
 from ddt import ddt, data, unpack
 
-from lyricsbot.lib import join, split
+from lyricsbot.lib.lib import join, split
 
 
 @ddt
@@ -26,6 +26,7 @@ class TestLib(unittest.TestCase):
         """
         sequence_to_join = ['Game', 'of', 'Thrones']
         response = join(sequence_to_join, join_separator)
+
         self.assertEqual(expected, response)
 
     @data(
@@ -47,7 +48,8 @@ class TestLib(unittest.TestCase):
         Case: split by empty symbol separator.
         Expected: ValueError raise.
         """
-        string_to_split, symbol_by_split, expected_error = 'GameofThrones', '', ValueError
+        string_to_split, symbol_by_split = 'GameofThrones', ''
+        expected_error = ValueError
 
         with self.assertRaises(expected_error):
             split(string_to_split, symbol_by_split)
@@ -57,7 +59,9 @@ class TestLib(unittest.TestCase):
         Case: split by None separator.
         Expected: split works with None separator as like space symbol.
         """
-        string_to_split, symbol_by_split, expected = 'GameofThrones', None, ['GameofThrones']
+        string_to_split, symbol_by_split = 'GameofThrones', None
+        expected = ['GameofThrones']
+
         response = split(string_to_split, symbol_by_split)
 
         self.assertEqual(expected, response)

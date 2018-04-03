@@ -5,7 +5,7 @@ import unittest
 
 from ddt import ddt, data, unpack
 
-from lyricsbot.domains.songlyrics import (
+from lyricsbot.domains.songlyrics.songlyrics import (
     format_request_data_url,
     parse_lyrics
 )
@@ -47,4 +47,5 @@ class TestURL(unittest.TestCase):
         """
         url = 'http://www.songlyrics.com/florence-the-machine/rabbit-heart-raise-it-up-lyrics/'
         result = parse_lyrics(url)
+
         self.assertEqual(EXPECTED_SONGLYRICS, result)

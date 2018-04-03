@@ -1,6 +1,8 @@
 """
 Utils for tests.
 """
+
+
 EXPECTED_GENIUS = """It's time to commit
 Open on up
 We'll be here all day

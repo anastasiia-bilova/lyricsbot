@@ -43,7 +43,7 @@ def parse_lyrics(url):
     return full_lyrics_string
 
 
-def get_song_text(author, title):
+def get_song_text_from_songlyrics(author, title):
     """
     Get song lyrics.
     """

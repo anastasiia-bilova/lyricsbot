@@ -5,7 +5,7 @@ import unittest
 
 from ddt import ddt, data, unpack
 
-from lyricsbot.domains.lyricsondemand import (
+from lyricsbot.domains.lyricsondemand.lyricsondemand import (
     format_request_data_url,
     parse_lyrics
 )
@@ -47,4 +47,5 @@ class TestURL(unittest.TestCase):
         """
         url = 'https://www.lyricsondemand.com/c/childishgambinolyrics/redbonelyrics.html'
         result = parse_lyrics(url)
+
         self.assertEqual(EXPECTED_LYRICSONDEMAND, result)

@@ -5,7 +5,7 @@ import unittest
 
 from ddt import ddt, data, unpack
 
-from lyricsbot.domains.genius import (
+from lyricsbot.domains.genius.genius import (
     format_request_data_url,
     parse_lyrics
 )
@@ -47,4 +47,29 @@ class TestURL(unittest.TestCase):
         """
         url = 'https://genius.com/Kopecky-talk-to-me-lyrics'
         result = parse_lyrics(url)
+
         self.assertEqual(EXPECTED_GENIUS, result)
+
+    def test_parse_lyrics_without_text(self):
+        """
+        Case: get song lyrics thru URL.
+        Expected: .
+        """
+        url = 'https://genius.com/Eminem-beautiful-lyrics'
+        expected_error = 'The song is not available, sorry.'
+
+        result = parse_lyrics(url)
+
+        self.assertEqual(expected_error, result)
+
+    def test_parse_lyrics_text_exist(self):
+        """
+        Case: get song lyrics thru URL.
+        Expected: .
+        """
+        url = 'https://genius.com/Emptyself-artificial-light-lyrics'
+        expected_text_exist = 'To get song lyrics tap the press me button.'
+
+        result = parse_lyrics(url)
+
+        self.assertEqual(expected_text_exist, result)
