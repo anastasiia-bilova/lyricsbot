@@ -4,14 +4,24 @@ Get song lyrics via users' data.
 import requests
 from bs4 import BeautifulSoup
 
-from lyricsbot.domains.genius.config import GENIUS_DOWNLOAD_URL
-from lyricsbot.domains.genius.utils import (
-    make_suitable_url_parameters,
-    remove_punctuation_symbols,
-)
+try:
+    from domains.genius.config import GENIUS_DOWNLOAD_URL
+    from domains.genius.utils import (
+        make_suitable_url_parameters,
+        remove_punctuation_symbols,
+    )
+    from domains.songlyrics.songlyrics import get_song_text_from_songlyrics
+# pylint:disable=bare-except
+except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
+    from lyricsbot.domains.genius.config import GENIUS_DOWNLOAD_URL
+    from lyricsbot.domains.genius.utils import (
+        make_suitable_url_parameters,
+        remove_punctuation_symbols,
+    )
+    from lyricsbot.domains.songlyrics.songlyrics import get_song_text_from_songlyrics
 
-# if user ask lyrics without 'Press me!' button
-LYRICS_WITHOUT_PRESSME_BUTTON = 'Sorry, we didn\'t mean for that to happen!'
+
+LYRICS_NOT_EXIST = 'Sorry, we didn\'t mean for that to happen!'
 
 
 def format_request_data_url(author_song, title_song):
@@ -43,13 +53,6 @@ def parse_lyrics(url):
 
     full_lyrics_string = soup.find('p').get_text()
 
-    # if the lyrics are more than 3000 characters, then it is too large for telegram message
-    if len(full_lyrics_string) > 3000:
-        return 'The song is not available, sorry.'
-
-    if LYRICS_WITHOUT_PRESSME_BUTTON in full_lyrics_string:
-        full_lyrics_string = 'To get song lyrics tap the press me button.'
-
     return full_lyrics_string
 
 
@@ -57,4 +60,9 @@ def get_song_text_from_genius(author, title):
     """
     Get song lyrics.
     """
-    return parse_lyrics(format_request_data_url(author, title))
+    complete_text = parse_lyrics(format_request_data_url(author, title))
+
+    if LYRICS_NOT_EXIST in complete_text:
+        return get_song_text_from_songlyrics(author, title)
+    else:
+        return complete_text

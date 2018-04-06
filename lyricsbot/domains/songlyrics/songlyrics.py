@@ -4,11 +4,23 @@ Get song lyrics via users' data.
 import requests
 from bs4 import BeautifulSoup
 
-from lyricsbot.domains.songlyrics.config import SONGLYRICS_DOWNLOAD_URL
-from lyricsbot.domains.songlyrics.utils import (
-    make_suitable_url_parameters,
-    remove_punctuation_symbols,
-)
+try:
+    from domains.songlyrics.config import SONGLYRICS_DOWNLOAD_URL
+    from domains.songlyrics.utils import (
+        make_suitable_url_parameters,
+        remove_punctuation_symbols,
+    )
+# pylint:disable=bare-except
+except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
+    from lyricsbot.domains.songlyrics.config import SONGLYRICS_DOWNLOAD_URL
+    from lyricsbot.domains.songlyrics.utils import (
+        make_suitable_url_parameters,
+        remove_punctuation_symbols,
+    )
+
+
+# if user ask lyrics without 'Press me!' button
+LYRICS_WITHOUT_PRESSME_BUTTON = 'Sorry, we have no'
 
 
 def format_request_data_url(author_song, title_song):
@@ -40,11 +52,14 @@ def parse_lyrics(url):
 
     full_lyrics_string = '\n'.join(lyrics_as_list)
 
+    if LYRICS_WITHOUT_PRESSME_BUTTON in full_lyrics_string:
+        full_lyrics_string = 'To get song lyrics tap the press me button.'
+
     return full_lyrics_string
 
 
 def get_song_text_from_songlyrics(author, title):
     """
-    Get song lyrics.
+    Get song lyrics from songlyrics.com.
     """
     return parse_lyrics(format_request_data_url(author, title))
