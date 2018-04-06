@@ -1,15 +1,23 @@
 """
-Tests.
+Tests to verify the data song with url and parser for genius.com.
 """
 import unittest
 
 from ddt import ddt, data, unpack
 
-from lyricsbot.domains.genius.genius import (
-    format_request_data_url,
-    parse_lyrics
-)
-from lyricsbot.tests.domains.utils import EXPECTED_GENIUS
+try:
+    from domains.genius.genius import (
+        format_request_data_url,
+        parse_lyrics
+    )
+    from tests.domains.utils import EXPECTED_GENIUS
+# pylint:disable=bare-except
+except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
+    from lyricsbot.domains.genius.genius import (
+        format_request_data_url,
+        parse_lyrics
+    )
+    from lyricsbot.tests.domains.utils import EXPECTED_GENIUS
 
 
 @ddt
@@ -43,7 +51,7 @@ class TestURL(unittest.TestCase):
     def test_parse_lyrics(self):
         """
         Case: get song lyrics thru URL.
-        Expected: song lyrics.
+        Expected: complete song lyrics.
         """
         url = 'https://genius.com/Kopecky-talk-to-me-lyrics'
         result = parse_lyrics(url)
@@ -67,8 +75,8 @@ class TestURL(unittest.TestCase):
         Case: get song lyrics thru URL.
         Expected: .
         """
-        url = 'https://genius.com/Emptyself-artificial-light-lyrics'
-        expected_text_exist = 'To get song lyrics tap the press me button.'
+        url = 'https://genius.com/wewewe-qyqyqy-lyrics'
+        expected_text_exist = 'Song doesn\'t exist!'
 
         result = parse_lyrics(url)
 

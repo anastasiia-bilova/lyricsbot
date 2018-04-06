@@ -11,7 +11,7 @@ from lyricsbot.lib.lib import join, split
 @ddt
 class TestLib(unittest.TestCase):
     """
-    Test for custom implementation built-in Python methods.
+    Tests for custom implementation built-in Python methods.
     """
 
     @data(

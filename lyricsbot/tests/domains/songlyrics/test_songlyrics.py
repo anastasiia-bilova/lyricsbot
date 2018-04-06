@@ -1,15 +1,23 @@
 """
-Tests.
+Tests to verify the data song with url and parser for songlyrics.com.
 """
 import unittest
 
 from ddt import ddt, data, unpack
 
-from lyricsbot.domains.songlyrics.songlyrics import (
-    format_request_data_url,
-    parse_lyrics
-)
-from lyricsbot.tests.domains.utils import EXPECTED_SONGLYRICS
+try:
+    from domains.songlyrics.songlyrics import (
+        format_request_data_url,
+        parse_lyrics
+    )
+    from tests.domains.utils import EXPECTED_SONGLYRICS
+# pylint:disable=bare-except
+except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
+    from lyricsbot.domains.songlyrics.songlyrics import (
+        format_request_data_url,
+        parse_lyrics
+    )
+    from lyricsbot.tests.domains.utils import EXPECTED_SONGLYRICS
 
 
 @ddt
