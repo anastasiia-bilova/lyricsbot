@@ -3,14 +3,20 @@ Configurations of the database.
 """
 import psycopg2
 
-from lyricsbot.config import URL
-from lyricsbot.errors import ConnectionError  # pylint: disable=W0622
-from lyricsbot.lyricsbot_utils import parse_url_db
+try:
+    from config import URL  # pylint: disable=relative-import
+    from errors import ConnectionError  # pylint: disable=W0622,relative-import
+    from lyricsbot_utils import parse_url_db  # pylint: disable=relative-import
+# pylint:disable=bare-except
+except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
+    from lyricsbot.config import URL
+    from lyricsbot.errors import ConnectionError  # pylint: disable=W0622
+    from lyricsbot.lyricsbot_utils import parse_url_db
 
 
 def connection_to_db():
     """
-    Return connection to the database.
+    Return connection to the database or error.
     """
     try:
         credentials = parse_url_db(URL)
@@ -23,7 +29,7 @@ def connection_to_db():
 
 def create_user_state_table():
     """
-    Create thr user_state table to receive the user location.
+    Create the user_state table to receive the user location.
     """
     connection = connection_to_db()
     cursor = connection.cursor()
@@ -72,7 +78,7 @@ def update_user_state(mess_chat_id, state):
 
 def get_user_state(mess_chat_id):
     """
-    Get the user location (state).
+    Return the user location (state).
     """
     connection = connection_to_db()
     cursor = connection.cursor()
@@ -105,7 +111,7 @@ def create_song_data_table():
 
 def insert_data_to_sd_table(mess_chat_id):
     """
-    Insert the song data to the song_data table.
+    Insert the user requests to the song_data table.
     """
     connection = connection_to_db()
     cursor = connection.cursor()
@@ -137,7 +143,7 @@ def update_author_song(author_song, mess_chat_id):
 
 def get_author_song(mess_chat_id):
     """
-    Get the author of the song entered by the user.
+    Return the author of the song entered by user.
     """
     connection = connection_to_db()
     cursor = connection.cursor()
@@ -147,7 +153,10 @@ def get_author_song(mess_chat_id):
         "WHERE user_id = {0};".format(mess_chat_id)
     )
 
-    return cursor.fetchone()[0]
+    # obtain the first element of the set
+    author_of_song = cursor.fetchone()[0]
+
+    return author_of_song
 
 
 def update_title_song(title_song, mess_chat_id):
@@ -167,7 +176,7 @@ def update_title_song(title_song, mess_chat_id):
 
 def get_title_song(mess_chat_id):
     """
-    Get the title of the song entered by the user.
+    Return the title of the song entered by user.
     """
     connection = connection_to_db()
     cursor = connection.cursor()
@@ -177,7 +186,10 @@ def get_title_song(mess_chat_id):
         "WHERE user_id = {0};".format(mess_chat_id)
     )
 
-    return cursor.fetchone()[0]
+    # obtain the first element of the set
+    title_of_song = cursor.fetchone()[0]
+
+    return title_of_song
 
 
 if __name__ == '__main__':
