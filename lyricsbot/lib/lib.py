@@ -20,7 +20,7 @@ def join(sequence, separator):
 
 def split(string, separator):
     """
-    Return a list of the words in the string, using separator as the delimiter string.
+    Return a list of the words in the string, using separator as the delimiter.
     """
     if separator == '':
         raise ValueError('Empty separator')
