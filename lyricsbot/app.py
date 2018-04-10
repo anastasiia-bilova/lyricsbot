@@ -164,5 +164,5 @@ if __name__ == '__main__':
             port=int(os.environ.get('PORT', 5000))
         )
 
-    if os.environ['ENVIRONMENT'] == 'local':
-        bot.polling()
+    # if os.environ['ENVIRONMENT'] == 'local':
+    #     bot.polling()
