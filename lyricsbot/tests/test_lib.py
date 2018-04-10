@@ -5,7 +5,11 @@ import unittest
 
 from ddt import ddt, data, unpack
 
-from lyricsbot.lib.lib import join, split
+try:
+    from lib.lib import join, split
+# pylint:disable=bare-except
+except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
+    from lyricsbot.lib.lib import join, split
 
 
 @ddt
