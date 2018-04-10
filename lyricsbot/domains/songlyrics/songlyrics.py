@@ -1,5 +1,5 @@
 """
-Get song lyrics via users' data.
+Get the song lyrics via users' data from songlyrics.com.
 """
 import requests
 from bs4 import BeautifulSoup
@@ -19,7 +19,7 @@ except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     )
 
 
-# if user ask lyrics without 'Press me!' button
+# if the user ask lyrics without 'Press me!' button or enters incorrect data
 LYRICS_WITHOUT_PRESSME_BUTTON = 'Sorry, we have no'
 
 
@@ -46,14 +46,17 @@ def parse_lyrics(url):
     """
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
-    lyrics_raw_content = soup.find_all(attrs={'class': 'songLyricsV14 iComment-text'})
+
+    lyrics_raw_content = soup.find_all(
+        attrs={'class': 'songLyricsV14 iComment-text'}
+    )
 
     lyrics_as_list = [text.get_text() for text in lyrics_raw_content]
 
     full_lyrics_string = '\n'.join(lyrics_as_list)
 
     if LYRICS_WITHOUT_PRESSME_BUTTON in full_lyrics_string:
-        full_lyrics_string = 'To get song lyrics tap the press me button.'
+        full_lyrics_string = 'Song doesn\'t exist!\nTo get song lyrics tap the press me button.'
 
     return full_lyrics_string
 

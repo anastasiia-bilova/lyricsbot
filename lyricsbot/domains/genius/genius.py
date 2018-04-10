@@ -1,5 +1,5 @@
 """
-Get song lyrics via users' data.
+Get the song lyrics via users' data from genius.com.
 """
 import requests
 from bs4 import BeautifulSoup
@@ -20,8 +20,8 @@ except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     )
     from lyricsbot.domains.songlyrics.songlyrics import get_song_text_from_songlyrics
 
-
-LYRICS_NOT_EXIST = 'Sorry, we didn\'t mean for that to happen!'
+# if the lyrics of song dont exist on genius.com
+LYRICS_DO_NOT_EXIST = 'Sorry, we didn\'t mean for that to happen!'
 
 
 def format_request_data_url(author_song, title_song):
@@ -58,11 +58,11 @@ def parse_lyrics(url):
 
 def get_song_text_from_genius(author, title):
     """
-    Get song lyrics.
+    Get song lyrics from genius.com.
     """
     complete_text = parse_lyrics(format_request_data_url(author, title))
 
-    if LYRICS_NOT_EXIST in complete_text:
+    if LYRICS_DO_NOT_EXIST in complete_text:
         return get_song_text_from_songlyrics(author, title)
-    else:
-        return complete_text
+
+    return complete_text
