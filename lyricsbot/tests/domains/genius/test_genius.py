@@ -60,8 +60,8 @@ class TestURL(unittest.TestCase):
 
     def test_parse_lyrics_without_text(self):
         """
-        Case: get song lyrics thru URL.
-        Expected: .
+        Case: link should reproduce the error message, because the song is not available.
+        Expected: the message about the unavailability of a song.
         """
         url = 'https://genius.com/Eminem-beautiful-lyrics'
         expected_error = 'The song is not available, sorry.'
@@ -72,12 +72,12 @@ class TestURL(unittest.TestCase):
 
     def test_parse_lyrics_text_exist(self):
         """
-        Case: get song lyrics thru URL.
-        Expected: .
+        Case: link should reproduce the error message, because the song doesn't exist or entered data without a button.
+        Expected: message that the song does not exist.
         """
         url = 'https://genius.com/wewewe-qyqyqy-lyrics'
-        expected_text_exist = 'Song doesn\'t exist!'
+        expected = 'Song doesn\'t exist!\nTo get song lyrics tap the press me button.'
 
         result = parse_lyrics(url)
 
-        self.assertEqual(expected_text_exist, result)
+        self.assertEqual(expected, result)
