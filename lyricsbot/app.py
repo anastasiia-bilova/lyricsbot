@@ -6,7 +6,6 @@ import os
 import telebot
 from telebot import types
 from telebot.apihelper import ApiException
-from flask import Flask, request
 
 try:
     from config import TOKEN  # pylint: disable=relative-import
@@ -40,8 +39,6 @@ except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     )
     from lyricsbot.domains.genius.genius import get_song_text_from_genius
 
-
-server = Flask(__name__)  # pylint: disable=C0103
 
 bot = telebot.TeleBot(TOKEN)  # pylint: disable=C0103
 
@@ -133,33 +130,7 @@ def render_initial_keyboard(message):
     )
 
 
-@server.route("/" + TOKEN, methods=['POST'])
-def getMessage():  # pylint: disable=C0103
-    """
-    Update for webhook.
-    """
-    bot.process_new_updates(
-        [telebot.types.Update.de_json(request.stream.read().decode("utf-8"))]
-    )
-
-    return "!", 200
-
-
-@server.route("/")
-def webhook():
-    """
-    Webhook.
-    """
-    bot.remove_webhook()
-    bot.set_webhook(url="https://ancient-dusk-91680.herokuapp.com/" + TOKEN)
-
-    return "!", 200
-
-
 if __name__ == '__main__':
 
-    if os.environ['ENVIRONMENT'] == 'production':
-        server.run(
-            host="0.0.0.0",
-            port=int(os.environ.get('PORT', 5000))
-        )
+    if os.environ['ENVIRONMENT'] == 'local':
+        bot.polling()
