@@ -133,5 +133,6 @@ def render_initial_keyboard(message):
 
 if __name__ == '__main__':
 
-    if os.environ['ENVIRONMENT'] == 'local':
-        bot.polling()
+    bot.polling()
+    # if os.environ['ENVIRONMENT'] == 'local':
+    #     bot.polling()
