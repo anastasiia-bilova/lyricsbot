@@ -9,7 +9,7 @@ from telebot.apihelper import ApiException
 from flask import Flask, request
 
 try:
-    from config import TOKEN  # pylint: disable=relative-import
+    # from config import TOKEN  # pylint: disable=relative-import
     from database_configurations import (  # pylint: disable=relative-import
         create_song_data_table,
         create_user_state_table,
@@ -41,7 +41,7 @@ except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     from lyricsbot.domains.genius.genius import get_song_text_from_genius
 
 
-bot = telebot.TeleBot(TOKEN)  # pylint: disable=C0103
+bot = telebot.TeleBot('589737790:AAEc0Y3KYi4V7x5w98zAnRgNa634xX0dODM')  # pylint: disable=C0103
 
 
 @bot.message_handler(commands=['start'])
@@ -133,6 +133,5 @@ def render_initial_keyboard(message):
 
 if __name__ == '__main__':
 
-    bot.polling()
-    # if os.environ['ENVIRONMENT'] == 'local':
-    #     bot.polling()
+    if os.environ['ENVIRONMENT'] == 'local':
+        bot.polling()
