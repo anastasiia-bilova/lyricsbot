@@ -3,10 +3,10 @@ Custom implementation of Telegram Bot.
 """
 import os
 
+from flask import Flask, request
 import telebot
 from telebot import types
 from telebot.apihelper import ApiException
-from flask import Flask, request
 
 try:
     from config import TOKEN  # pylint: disable=relative-import
@@ -144,7 +144,6 @@ def getMessage():  # pylint: disable=C0103
 
     return "!", 200
 
-
 @server.route("/")
 def webhook():
     """
@@ -157,9 +156,11 @@ def webhook():
 
 
 if __name__ == '__main__':
-
     if os.environ['ENVIRONMENT'] == 'production':
         server.run(
             host="0.0.0.0",
             port=int(os.environ.get('PORT', 5000))
         )
+
+    else:
+        bot.polling()
