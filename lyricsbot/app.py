@@ -40,8 +40,7 @@ except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     )
     from lyricsbot.domains.genius.genius import get_song_text_from_genius
 
-
-server = Flask(__name__)  # pylint: disable=C0103
+server = Flask(__name__)
 
 bot = telebot.TeleBot(TOKEN)  # pylint: disable=C0103
 
@@ -107,7 +106,7 @@ def handle_request_text(message):
             bot.send_message(
                 message.chat.id, get_song_text_from_genius(author, title)
             )
-        # if the lyrics are more than 3000 characters, then it is too large for telegram message
+        # Message was too long. Current maximum length is 4096 UTF8 characters
         except ApiException:
             bot.send_message(
                 message.chat.id, "The song is not available, sorry."

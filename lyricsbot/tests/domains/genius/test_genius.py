@@ -8,16 +8,24 @@ from ddt import ddt, data, unpack
 try:
     from domains.genius.genius import (
         format_request_data_url,
-        parse_lyrics
+        get_song_text_from_genius,
+        parse_lyrics,
     )
-    from tests.domains.utils import EXPECTED_GENIUS
+    from tests.domains.utils import (
+        EXPECTED_KOPECKY_FOR_GENIUS,
+        EXPECTED_EMPTYSELF_FOR_GENIUS,
+    )
 # pylint:disable=bare-except
 except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     from lyricsbot.domains.genius.genius import (
         format_request_data_url,
-        parse_lyrics
+        get_song_text_from_genius,
+        parse_lyrics,
     )
-    from lyricsbot.tests.domains.utils import EXPECTED_GENIUS
+    from lyricsbot.tests.domains.utils import (
+        EXPECTED_KOPECKY_FOR_GENIUS,
+        EXPECTED_EMPTYSELF_FOR_GENIUS,
+    )
 
 
 @ddt
@@ -56,7 +64,7 @@ class TestURL(unittest.TestCase):
         url = 'https://genius.com/Kopecky-talk-to-me-lyrics'
         result = parse_lyrics(url)
 
-        self.assertEqual(EXPECTED_GENIUS, result)
+        self.assertEqual(EXPECTED_KOPECKY_FOR_GENIUS, result)
 
     def test_parse_lyrics_without_text(self):
         """
@@ -76,8 +84,30 @@ class TestURL(unittest.TestCase):
         Expected: message that the song does not exist.
         """
         url = 'https://genius.com/wewewe-qyqyqy-lyrics'
-        expected = 'Song doesn\'t exist!\nTo get song lyrics tap the press me button.'
+        expected = u"\n    Sorry, we didn't mean for that to happen!\n  "
 
         result = parse_lyrics(url)
 
         self.assertEqual(expected, result)
+
+    @data(
+        (
+            'Kopecky',
+            'Talk To Me',
+            EXPECTED_KOPECKY_FOR_GENIUS,
+        ),
+        (
+            'emptyself',
+            'artificial light',
+            EXPECTED_EMPTYSELF_FOR_GENIUS,
+        ),
+    )
+    @unpack
+    def test_get_song_lyrics(self, author, title, expected_result):
+        """
+        Case: get the complete lyrics song.
+        Expected: the complete lyrics.
+        """
+        result = get_song_text_from_genius(author, title)
+
+        self.assertEqual(expected_result, result)
