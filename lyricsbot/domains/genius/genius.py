@@ -21,7 +21,7 @@ except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     from lyricsbot.domains.songlyrics.songlyrics import get_song_text_from_songlyrics
 
 # if the lyrics of song dont exist on genius.com
-LYRICS_DO_NOT_EXIST = 'Sorry, we didn\'t mean for that to happen!'
+LYRICS_DO_NOT_EXIST = u"\n    Sorry, we didn't mean for that to happen!\n  "
 
 
 def format_request_data_url(author_song, title_song):
@@ -52,6 +52,11 @@ def parse_lyrics(url):
     soup = BeautifulSoup(page.content, 'html.parser')
 
     full_lyrics_string = soup.find('p').get_text()
+
+    max_length_characters = 4096
+
+    if len(full_lyrics_string) >= max_length_characters:
+        full_lyrics_string = 'The song is not available, sorry.'
 
     return full_lyrics_string
 
