@@ -105,7 +105,7 @@ def handle_request_text(message):
             bot.send_message(
                 message.chat.id, get_song_text_from_genius(author, title)
             )
-        # if the lyrics are more than 3000 characters, then it is too large for telegram message
+        # Message was too long. Current maximum length is 4096 UTF8 characters
         except ApiException:
             bot.send_message(
                 message.chat.id, "The song is not available, sorry."
