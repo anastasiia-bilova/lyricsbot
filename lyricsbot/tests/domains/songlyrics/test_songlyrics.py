@@ -8,16 +8,24 @@ from ddt import ddt, data, unpack
 try:
     from domains.songlyrics.songlyrics import (
         format_request_data_url,
-        parse_lyrics
+        get_song_text_from_songlyrics,
+        parse_lyrics,
     )
-    from tests.domains.utils import EXPECTED_SONGLYRICS
+    from tests.domains.utils import (
+        EXPECTED_FLORENCE,
+        EXPECTED_KOPECKY_FOR_SONGLYRICS,
+    )
 # pylint:disable=bare-except
 except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     from lyricsbot.domains.songlyrics.songlyrics import (
         format_request_data_url,
-        parse_lyrics
+        get_song_text_from_songlyrics,
+        parse_lyrics,
     )
-    from lyricsbot.tests.domains.utils import EXPECTED_SONGLYRICS
+    from lyricsbot.tests.domains.utils import (
+        EXPECTED_FLORENCE,
+        EXPECTED_KOPECKY_FOR_SONGLYRICS,
+    )
 
 
 @ddt
@@ -56,19 +64,19 @@ class TestURL(unittest.TestCase):
         url = 'http://www.songlyrics.com/florence-the-machine/rabbit-heart-raise-it-up-lyrics/'
         result = parse_lyrics(url)
 
-        self.assertEqual(EXPECTED_SONGLYRICS, result)
+        self.assertEqual(EXPECTED_FLORENCE, result)
 
-    def test_parse_lyrics_without_text(self):
+    def test_parse_lyrics_with_large_text(self):
         """
         Case: link should reproduce the error message, because the song is not available.
         Expected: the message about the unavailability of a song.
         """
         url = 'https://genius.com/Eminem-beautiful-lyrics'
-        expected_error = 'The song is not available, sorry.'
+        expected = 'Song doesn\'t exist!\nTo get song lyrics tap the press me button.'
 
         result = parse_lyrics(url)
 
-        self.assertEqual(expected_error, result)
+        self.assertEqual(expected, result)
 
     def test_parse_lyrics_text_exist(self):
         """
@@ -81,3 +89,25 @@ class TestURL(unittest.TestCase):
         result = parse_lyrics(url)
 
         self.assertEqual(expected, result)
+
+    @data(
+        (
+            'Kopecky',
+            'Talk To Me',
+            EXPECTED_KOPECKY_FOR_SONGLYRICS,
+        ),
+        (
+            'florence + the machine',
+            'Rabbit Heart (Raise It Up)',
+            EXPECTED_FLORENCE,
+        ),
+    )
+    @unpack
+    def test_get_song_lyrics(self, author, title, expected_result):
+        """
+        Case: get the complete lyrics song.
+        Expected: the complete lyrics.
+        """
+        result = get_song_text_from_songlyrics(author, title)
+
+        self.assertEqual(expected_result, result)

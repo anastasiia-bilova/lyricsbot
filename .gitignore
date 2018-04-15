@@ -88,6 +88,8 @@ bin/
 include/
 pip-selfcheck.json
 requirement.txt
+config.py
+test_lyricsbot_utils.py
 
 *.sqlite3
 
