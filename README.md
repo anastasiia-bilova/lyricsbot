@@ -2,6 +2,8 @@
 
 Lyricsbot is a Telegram bot, that allow user to get text of song.
 
+![Build](https://travis-ci.org/anastasia-bilova/lyricsbot.svg?branch=develop)
+![Codecov](https://img.shields.io/codecov/c/github/anastasia-bilova/lyricsbot/coverage.svg)
 ![Python3](https://img.shields.io/badge/Python-3.5-brightgreen.svg)
 ![Python3](https://img.shields.io/badge/Python-3.6-brightgreen.svg)
 
