@@ -143,6 +143,7 @@ def getMessage():  # pylint: disable=C0103
 
     return "!", 200
 
+
 @server.route("/")
 def webhook():
     """
