@@ -56,7 +56,7 @@ def parse_lyrics(url):
     full_lyrics_string = '\n'.join(lyrics_as_list)
 
     if full_lyrics_string == '' or \
-        LYRICS_WITHOUT_PRESSME_BUTTON in full_lyrics_string:
+       LYRICS_WITHOUT_PRESSME_BUTTON in full_lyrics_string:
         full_lyrics_string = 'Song doesn\'t exist!\nTo get song lyrics tap the press me button.'
 
     return full_lyrics_string
