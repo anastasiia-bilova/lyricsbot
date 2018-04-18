@@ -17,7 +17,7 @@ pip3 install -r requirements.txt
 
 ## Deploy to Heroku
 
-Create your [Heroku account] (https://signup.heroku.com/?c=70130000001x9jFAAQ), install the [Heroku CLI] (https://devcenter.heroku.com/articles/getting-started-with-python#set-up) and install [Git] (https://gist.github.com/derhuerst/1b15ff4652a867391f03), if you still have not done this.
+Create your [Heroku account](https://signup.heroku.com/?c=70130000001x9jFAAQ), install the [Heroku CLI](https://devcenter.heroku.com/articles/getting-started-with-python#set-up) and install [Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03), if you still have not done this.
 
 Clone the application from Git to your working directory:
 
@@ -72,7 +72,7 @@ heroku restart or heroku restart -a app_name
 Use the ElephantSQL is a PostgreSQL database hosting service. 
 Will manage administrative tasks of PostgreSQL, such as installation, upgrades to latest stable version and backup handling.
 
-To get started you need to sign up on [ElephantSQL] (https://www.elephantsql.com/)
+To get started you need to sign up on [ElephantSQL](https://www.elephantsql.com/)
 
 Create a new instance:
 
