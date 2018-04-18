@@ -16,3 +16,5 @@ script:
 - pycodestyle lyricsbot
 - pylint lyricsbot
 - python -m unittest discover
+- coverage run --source=lyricsbot -m unittest discover
+- coverage report -m
