@@ -66,7 +66,7 @@ class TestURL(unittest.TestCase):
 
         self.assertEqual(EXPECTED_FLORENCE, result)
 
-    def test_parse_lyrics_with_large_text(self):
+    def test_parse_with_large_text(self):
         """
         Case: link should reproduce the error message, because the song is not available.
         Expected: the message about the unavailability of a song.
