@@ -40,7 +40,7 @@ except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     )
     from lyricsbot.domains.genius.genius import get_song_text_from_genius
 
-server = Flask(__name__)
+SERVER = Flask(__name__)
 
 bot = telebot.TeleBot(TOKEN)  # pylint: disable=C0103
 
@@ -132,7 +132,7 @@ def render_initial_keyboard(message):
     )
 
 
-@server.route("/" + TOKEN, methods=['POST'])
+@SERVER.route("/" + TOKEN, methods=['POST'])
 def getMessage():  # pylint: disable=C0103
     """
     Update for webhook.
@@ -144,7 +144,7 @@ def getMessage():  # pylint: disable=C0103
     return "!", 200
 
 
-@server.route("/")
+@SERVER.route("/")
 def webhook():
     """
     Webhook.
@@ -157,7 +157,7 @@ def webhook():
 
 if __name__ == '__main__':
     if os.environ['ENVIRONMENT'] == 'production':
-        server.run(
+        SERVER.run(
             host="0.0.0.0",
             port=int(os.environ.get('PORT', 5000))
         )
