@@ -8,6 +8,9 @@ Lyricsbot is a Telegram bot, that allow user to get text of song.
 ![Python3](https://img.shields.io/badge/Python-3.6-brightgreen.svg)
 
 ![startpage](https://habrastorage.org/webt/xz/ry/ev/xzryevmf9ntv_9ob0egmk5xag1q.png)
+![button](https://habrastorage.org/webt/vk/s4/lx/vks4lx6y2mgk_qmmo_k55wg95-w.png)
+![title](https://habrastorage.org/webt/at/ck/gv/atckgvcgej_dscqf2u0nwr_qoka.png)
+![lyrics](https://habrastorage.org/webt/8e/xu/ra/8exuraxxk0rjj84foj98y4xhfwg.png)
 
 # Getting started
 
@@ -78,11 +81,11 @@ To get started you need to sign up on [ElephantSQL](https://www.elephantsql.com/
 
 Create a new instance:
 
-picture
+![newinstance](https://habrastorage.org/webt/ik/nj/b7/iknjb7cfcne0nfnip7dsiiip4vu.png)
 
 Connection URL format: postgres://username:password@hostname/databasename
 
-picture
+![urlformat](https://habrastorage.org/webt/fv/64/qh/fv64qh3pzgwdagpdk8tybjgt3pe.png)
 
 Install PostgreSQL database:
 
@@ -103,6 +106,9 @@ Or you can do this in one step:
 ```
 sudo -u postgres psql postgres://username:password@hostname/databasename
 ```
+
+## Environment variables
+
 
 ## Development
 
