@@ -7,8 +7,8 @@ Lyricsbot will find the text of your favorite song!
 ![Python3](https://img.shields.io/badge/Python-3.5-brightgreen.svg)
 ![Python3](https://img.shields.io/badge/Python-3.6-brightgreen.svg)
 
-![startpage](https://habrastorage.org/webt/da/gm/8-/dagm8-vv1snzx16ucolr4e6lkcu.png)![button](https://habrastorage.org/webt/2r/nf/jp/2rnfjpse-oop2o3lvakmbny-6mu.png)
-![title](https://habrastorage.org/webt/do/4i/d5/do4id5furqo9ipqcaglbtal_fuc.png)![lyrics](https://habrastorage.org/webt/8s/xd/qz/8sxdqz_3njggphkk4mmkrqapeoy.png)
+![startpage](https://habrastorage.org/webt/8y/ov/bp/8yovbphi_spydvnsffq0xfm38gm.png) ![button](https://habrastorage.org/webt/fl/uk/cp/flukcpdllw1txu8o9lemltxu4zw.png)
+![title](https://habrastorage.org/webt/84/k6/iv/84k6ivkqgnsqoe2w2atuasy8tc8.png) ![lyrics](https://habrastorage.org/webt/wg/bf/-3/wgbf-396qnasfrt7sjdttoocqi0.png)
 
 # Getting started
 
