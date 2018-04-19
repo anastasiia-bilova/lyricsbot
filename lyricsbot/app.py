@@ -10,7 +10,7 @@ from telebot.apihelper import ApiException
 
 try:
     from config import TOKEN  # pylint: disable=relative-import
-    from database_configurations import (  # pylint: disable=relative-import
+    from database_settings import (  # pylint: disable=relative-import
         create_song_data_table,
         create_user_state_table,
         get_author_song,
@@ -26,7 +26,7 @@ try:
 # pylint:disable=bare-except
 except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     from lyricsbot.config import TOKEN
-    from lyricsbot.database_configurations import (
+    from lyricsbot.database_settings import (
         create_song_data_table,
         create_user_state_table,
         get_author_song,

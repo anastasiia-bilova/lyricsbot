@@ -1,5 +1,5 @@
 """
-Configurations of the database.
+Settings of the database.
 """
 import psycopg2
 
