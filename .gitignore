@@ -89,7 +89,6 @@ include/
 pip-selfcheck.json
 requirement.txt
 config.py
-coverage.svg
 
 *.sqlite3
 
