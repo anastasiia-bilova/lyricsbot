@@ -1,18 +1,25 @@
 # lyricsbot
 
-Lyricsbot is a Telegram bot, that allow user to get text of song.
+Lyricsbot will find the text of your favorite song!
 
 ![Build](https://travis-ci.org/anastasia-bilova/lyricsbot.svg?branch=develop)
 ![Codecov](https://img.shields.io/codecov/c/github/anastasia-bilova/lyricsbot/coverage.svg)
 ![Python3](https://img.shields.io/badge/Python-3.5-brightgreen.svg)
 ![Python3](https://img.shields.io/badge/Python-3.6-brightgreen.svg)
 
-![startpage](https://habrastorage.org/webt/xz/ry/ev/xzryevmf9ntv_9ob0egmk5xag1q.png)
-![button](https://habrastorage.org/webt/vk/s4/lx/vks4lx6y2mgk_qmmo_k55wg95-w.png)
-![title](https://habrastorage.org/webt/at/ck/gv/atckgvcgej_dscqf2u0nwr_qoka.png)
-![lyrics](https://habrastorage.org/webt/8e/xu/ra/8exuraxxk0rjj84foj98y4xhfwg.png)
+![startpage](https://habrastorage.org/webt/da/gm/8-/dagm8-vv1snzx16ucolr4e6lkcu.png)![button](https://habrastorage.org/webt/2r/nf/jp/2rnfjpse-oop2o3lvakmbny-6mu.png)
+![title](https://habrastorage.org/webt/do/4i/d5/do4id5furqo9ipqcaglbtal_fuc.png)![lyrics](https://habrastorage.org/webt/8s/xd/qz/8sxdqz_3njggphkk4mmkrqapeoy.png)
 
 # Getting started
+
+## What is LyricsBot
+
+Lyricsbot is a Telegram bot that allows the user to receive lyrics.
+Note: The song must be written in English.
+
+All tokens and URLs are private because they are not available to users.
+
+## Install
 
 Install requirements on your environment:
 
@@ -77,7 +84,7 @@ heroku restart or heroku restart -a app_name
 Use the ElephantSQL is a PostgreSQL database hosting service. 
 Will manage administrative tasks of PostgreSQL, such as installation, upgrades to latest stable version and backup handling.
 
-To get started you need to sign up on [ElephantSQL](https://www.elephantsql.com/)
+To get started you need to sign up on [ElephantSQL](https://www.elephantsql.com/).
 
 Create a new instance:
 
@@ -109,6 +116,53 @@ sudo -u postgres psql postgres://username:password@hostname/databasename
 
 ## Environment variables
 
+Environment variables are variables that are defined for the current shell and are inherited by any child shells or processes, they are used to pass information into processes that are spawned from the shell.
+It can be said that environment variables help to create and shape the environment of where a program runs.
+
+We must use environment variable for simultaneous use of bot functions for local and production servers without changing the code.
+
+Create the Telegram test bot with which you will work locally.
+
+Temporarily set the environment variable `local` for the current shell and all its subprocesses:
+
+```
+export ENVIRONMENT="local"
+```
+To see a list of all of our environment variables and make sure that there is an environment variable, check its value:
+
+```
+env or printenv
+printenv ENVIRONMENT
+```
+
+For the main bot on the Heroku server, set the environment variable `production`:
+
+```
+heroku config:set ENVIRONMENT=production
+```
+
+This environment variable is persistent – it will remain in place across deploys and app restarts – so unless you need to change value, you only need to set it once.
+
+Make sure that there is an environment variable, check its value:
+
+```
+heroku config or heroku config:get ENVIRONMENT
+```
+
+Access the environment variables using the `os.environ['ENVIRONMENT']` template in Python.
+
+For instance:
+
+```
+if os.environ['ENVIRONMENT'] == 'production':
+    SERVER.run(
+        host="0.0.0.0",
+        port=int(os.environ.get('PORT', 5000))
+    )
+
+if os.environ['ENVIRONMENT'] == 'local':
+    bot.polling()
+```
 
 ## Development
 
