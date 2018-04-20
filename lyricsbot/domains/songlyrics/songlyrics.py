@@ -20,7 +20,7 @@ except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
 
 
 # if the user ask lyrics without 'Press me!' button or enters incorrect data
-LYRICS_WITHOUT_PRESSME_BUTTON = 'Sorry, we have no'
+INCORRECT_INPUT_MESSAGE = 'Sorry'
 
 
 def format_request_data_url(author_song, title_song):
@@ -56,7 +56,7 @@ def parse_lyrics(url):
     full_lyrics_string = '\n'.join(lyrics_as_list)
 
     if full_lyrics_string == '' or \
-       LYRICS_WITHOUT_PRESSME_BUTTON in full_lyrics_string:
+       INCORRECT_INPUT_MESSAGE in full_lyrics_string:
         full_lyrics_string = 'Song doesn\'t exist!\nTo get song lyrics tap the press me button.'
 
     return full_lyrics_string

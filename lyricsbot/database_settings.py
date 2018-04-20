@@ -5,12 +5,12 @@ import psycopg2
 
 try:
     from config import URL  # pylint: disable=relative-import
-    from errors import ConnectionError  # pylint: disable=W0622,relative-import
+    from errors import DatabaseConnectionError  # pylint: disable=W0622,relative-import
     from lyricsbot_utils import parse_url_db  # pylint: disable=relative-import
 # pylint:disable=bare-except
 except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     from lyricsbot.config import URL
-    from lyricsbot.errors import ConnectionError  # pylint: disable=W0622
+    from lyricsbot.errors import DatabaseConnectionError  # pylint: disable=W0622
     from lyricsbot.lyricsbot_utils import parse_url_db
 
 
@@ -24,7 +24,7 @@ def connection_to_db():
 
         return connection
     except psycopg2.OperationalError:
-        raise ConnectionError('No connection!')
+        raise DatabaseConnectionError('No connection!')
 
 
 def create_user_state_table():
