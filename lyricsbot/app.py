@@ -150,7 +150,7 @@ def webhook():
     Webhook.
     """
     bot.remove_webhook()
-    bot.set_webhook(url="https://secret-temple-65604.herokuapp.com/" + TOKEN)
+    bot.set_webhook(url="https://glacial-springs-87704.herokuapp.com/" + TOKEN)
 
     return "!", 200
 
