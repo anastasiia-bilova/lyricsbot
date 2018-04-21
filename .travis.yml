@@ -18,3 +18,4 @@ script:
 - python -m unittest discover
 - coverage run --source=lyricsbot -m unittest discover
 - coverage report -m
+- bash <(curl -s https://codecov.io/bash)
