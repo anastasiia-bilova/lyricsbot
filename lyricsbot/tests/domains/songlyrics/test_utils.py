@@ -1,14 +1,21 @@
 """
-Tests.
+Tests to verify the removal of punctuation characters for songlyrics.com URLs.
 """
 import unittest
 
 from ddt import ddt, data, unpack
 
-from lyricsbot.domains.songlyrics.utils import (
-    make_suitable_url_parameters,
-    remove_punctuation_symbols,
-)
+try:
+    from domains.songlyrics.utils import (
+        make_suitable_url_parameters,
+        remove_punctuation_symbols,
+    )
+# pylint:disable=bare-except
+except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
+    from lyricsbot.domains.songlyrics.utils import (
+        make_suitable_url_parameters,
+        remove_punctuation_symbols,
+    )
 
 
 @ddt
@@ -30,6 +37,7 @@ class TestURL(unittest.TestCase):
         Expected: author and title without symbols with spaces.
         """
         result = remove_punctuation_symbols(string)
+
         self.assertEqual(expected, result)
 
     @data(
@@ -43,4 +51,5 @@ class TestURL(unittest.TestCase):
         Expected: lowercase string with hyphen.
         """
         result = make_suitable_url_parameters(string)
+
         self.assertEqual(expected, result)

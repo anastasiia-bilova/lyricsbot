@@ -1,16 +1,20 @@
 """
-Helpers for `lyricsondemand` implementation.
+Helpers for `genius` implementation.
 """
 from string import punctuation
 
-from lyricsbot.lib import join, split
+try:
+    from lib.lib import join, split
+# pylint:disable=bare-except
+except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
+    from lyricsbot.lib.lib import join, split
 
 
 def make_suitable_url_parameters(url_parameter):
     """
-    Return a lowercase string without spaces.
+    Return a lowercase string with hyphen.
     """
-    return join(split(url_parameter, ' '), '').lower()
+    return join(split(url_parameter, ' '), '-').lower()
 
 
 def remove_punctuation_symbols(parameter):
@@ -20,7 +24,7 @@ def remove_punctuation_symbols(parameter):
     string = ''
 
     if ' + ' in parameter:
-        parameter = parameter.replace(' + ', ' and ')
+        parameter = parameter.replace(' + ', ' ')
 
     for element in parameter:
         if element not in punctuation:

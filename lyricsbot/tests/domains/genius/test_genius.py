@@ -1,30 +1,30 @@
 """
-Tests to verify the data song with url and parser for songlyrics.com.
+Tests to verify the data song with url and parser for genius.com.
 """
 import unittest
 
 from ddt import ddt, data, unpack
 
 try:
-    from domains.songlyrics.songlyrics import (
+    from domains.genius.genius import (
         format_request_data_url,
-        get_song_text_from_songlyrics,
+        get_song_text_from_genius,
         parse_lyrics,
     )
     from tests.domains.utils import (
-        EXPECTED_FLORENCE,
-        EXPECTED_KOPECKY_FOR_SONGLYRICS,
+        EXPECTED_KOPECKY_FOR_GENIUS,
+        EXPECTED_EMPTYSELF_FOR_GENIUS,
     )
 # pylint:disable=bare-except
 except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
-    from lyricsbot.domains.songlyrics.songlyrics import (
+    from lyricsbot.domains.genius.genius import (
         format_request_data_url,
-        get_song_text_from_songlyrics,
+        get_song_text_from_genius,
         parse_lyrics,
     )
     from lyricsbot.tests.domains.utils import (
-        EXPECTED_FLORENCE,
-        EXPECTED_KOPECKY_FOR_SONGLYRICS,
+        EXPECTED_KOPECKY_FOR_GENIUS,
+        EXPECTED_EMPTYSELF_FOR_GENIUS,
     )
 
 
@@ -38,12 +38,12 @@ class TestURL(unittest.TestCase):
         (
             'Kopecky',
             'Talk To Me',
-            'http://www.songlyrics.com/kopecky/talk-to-me-lyrics/',
+            'https://genius.com/Kopecky-talk-to-me-lyrics',
         ),
         (
-            'florence + the machine',
+            'Florence + The Machine',
             'Rabbit Heart (Raise It Up)',
-            'http://www.songlyrics.com/florence-the-machine/rabbit-heart-raise-it-up-lyrics/',
+            'https://genius.com/Florence-the-machine-rabbit-heart-raise-it-up-lyrics',
         ),
     )
     @unpack
@@ -59,24 +59,24 @@ class TestURL(unittest.TestCase):
     def test_parse_lyrics(self):
         """
         Case: get song lyrics thru URL.
-        Expected: song lyrics.
+        Expected: complete song lyrics.
         """
-        url = 'http://www.songlyrics.com/florence-the-machine/rabbit-heart-raise-it-up-lyrics/'
+        url = 'https://genius.com/Kopecky-talk-to-me-lyrics'
         result = parse_lyrics(url)
 
-        self.assertEqual(EXPECTED_FLORENCE, result)
+        self.assertEqual(EXPECTED_KOPECKY_FOR_GENIUS, result)
 
-    def test_parse_with_large_text(self):
+    def test_parse_lyrics_without_text(self):
         """
         Case: link should reproduce the error message, because the song is not available.
         Expected: the message about the unavailability of a song.
         """
         url = 'https://genius.com/Eminem-beautiful-lyrics'
-        expected = 'Song doesn\'t exist!\nTo get song lyrics tap the press me button.'
+        expected_error = 'The song is not available, sorry.'
 
         result = parse_lyrics(url)
 
-        self.assertEqual(expected, result)
+        self.assertEqual(expected_error, result)
 
     def test_parse_lyrics_text_exist(self):
         """
@@ -84,7 +84,7 @@ class TestURL(unittest.TestCase):
         Expected: message that the song does not exist.
         """
         url = 'https://genius.com/wewewe-qyqyqy-lyrics'
-        expected = 'Song doesn\'t exist!\nTo get song lyrics tap the press me button.'
+        expected = u"\n    Sorry, we didn't mean for that to happen!\n  "
 
         result = parse_lyrics(url)
 
@@ -94,12 +94,12 @@ class TestURL(unittest.TestCase):
         (
             'Kopecky',
             'Talk To Me',
-            EXPECTED_KOPECKY_FOR_SONGLYRICS,
+            EXPECTED_KOPECKY_FOR_GENIUS,
         ),
         (
-            'florence + the machine',
-            'Rabbit Heart (Raise It Up)',
-            EXPECTED_FLORENCE,
+            'emptyself',
+            'artificial light',
+            EXPECTED_EMPTYSELF_FOR_GENIUS,
         ),
     )
     @unpack
@@ -108,6 +108,6 @@ class TestURL(unittest.TestCase):
         Case: get the complete lyrics song.
         Expected: the complete lyrics.
         """
-        result = get_song_text_from_songlyrics(author, title)
+        result = get_song_text_from_genius(author, title)
 
         self.assertEqual(expected_result, result)

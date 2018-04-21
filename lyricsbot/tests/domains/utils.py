@@ -1,68 +1,133 @@
 """
 Utils for tests.
 """
-EXPECTED_LYRICSONDEMAND = """Daylight, I wake up feeling like you won't play right
-I usually know but now, that shit don't feel right
-It made me put away my pride
-So long, you made a nigga wait for some, so long
-You make it hoverboard like that, but no wrong
-I'm wishing I could make this mine, oh
 
-If you want it, yeah
-You can have it, oh, oh, oh
-If you need it, ooh
-We can make it, oh
-If you want it
-You can have it
+EXPECTED_EMPTYSELF_FOR_GENIUS = """I don't like artificial light,
+but I use it every night.
+No other way to see.
+No the day won't stay for me.
 
-But stay woke
-Niggas creepin'
-They gon' find you
-Gon' catch you sleepin'
-Ooh, now stay woke
-Niggas creepin'
-Now don't you close your eyes
+And when the lights go out,
+memory gets me around
+as I wander through the dark,
+but I can't get very far.
+And once again I find,
+I'm no good at being blind,
+and the light of every day
+can never be replaced.
 
-Too late
-You wanna make it right, but now it's too late
-My peanut butter chocolate cake with Kool-Aid
-I'm trying not to waste my time
+Don't mistake the true for the fake.
+A raft for an island,
+asleep for awake.
+There are so many ways to evade
+what's right in front of your face.
 
-If you want it, oh
-You can have it, you can have it
-If you need it
-You better believe in something
-We can make it
-If you want it
-You can have it, aah!
+If there's a way,
+I'd rather not remain
+so lost in disarray.
+My brain a battlefield
+of the wounded and the healed.
+And as my reach is short,
+these hands could use support
+to climb out of the trench
+I keep on falling in.
 
-But stay woke
-Niggas creepin'
-They gon' find you
-Gon' catch you sleepin'
-Put your hands up on me
-Now stay woke
-Niggas creepin'
-Now don't you close your eyes
-But stay woke, ooh
-Niggas creepin'
-They gon' find you
-Gon' catch you sleepin'
-Ooh, now stay woke
-Niggas creepin'
-Now don't you close your eyes
+Don't mistake the true for the fake.
+A raft for an island, asleep for awake.
+There are so many ways to evade
+what's right in front of your face.
 
-Baby get so scandalous, oh
-How'd it get so scandalous?
-Oh, oh
-Baby you
-How'd it get...
-How'd it get so scandalous?
-Ooh we get so scandalous
-But stay woke
-But stay woke"""
+Drank you in
+but I still thirst.
+Not the answer
+I thought you were.
+All we said.
+What's it worth?
+Not an anchor, only words."""
 
-EXPECTED_SONGLYRICS = """The looking glass, so shiny and new
+EXPECTED_KOPECKY_FOR_GENIUS = """It's time to commit
+Open on up
+We'll be here all day
+To relieve our ache
+Don't you feel it as well?
+Waiting for the day
+I think you know what's next
+I think you know so
+
+Talk to me
+Tell me all your secrets cause
+Cause I want to be everything you need
+Let's fall in love, I'm working overtime
+Working for the chance to be awake
+
+Been at it for weeks
+Saving on up
+For I'ma to break the bank
+Yeah, there's a dream I'd say
+Can you feel it at all?
+A pressure on your chest
+I know you know what's next
+I think you know so
+
+Talk to me
+Tell me all your secrets cause
+Cause I want to be everything you need
+Let's fall in love, I'm working overtime
+Working for the chance to be awake
+
+Talk to me
+Tell me all your secrets cause
+Cause I want to be everything you need
+Let's fall in love, I'm working overtime
+Working for the chance to be awake
+
+Picture this we're running away
+Leave all this behind us
+One more kiss, we're driving away
+Fueling up inside us
+
+Talk to me
+Tell me all your secrets cause
+Cause I want to be everything you need
+Let's fall in love, I'm working overtime
+Working for the chance to be awake
+
+Talk to me
+Tell me all your secrets cause
+Cause I want to be everything you need
+Don't hesitate another minute
+'Cause I love when you
+Talk to me like that"""
+
+
+EXPECTED_KOPECKY_FOR_SONGLYRICS = """It's time to commit.
+Open on up.
+we'll be here all day to relieve our ache.
+Don't you feel it as well?
+Waiting for the day.
+I think you know what's next.
+I think you know so talk to me.
+Tell me all your secrets cause I want to be everything you need.
+Let's fall in love I'm working overtime, working for the chance to be awake.
+Been at it for weeks.
+Savin' on up.
+For I'ma break the bank, and there's a dream I'd say.
+Can you feel it at all?
+A pressure in your chest.
+I know you know what's next.
+I think you know, so talk to me, tell me all you seek, cause I want to be everything you need.
+Let's fall in love, I'm workin' overtime, workin' for the chance to be awake.
+Talk to me, tell me all your secrets, cause I want to be everything you need.
+Let's fall in love I'm workin' overtime, workin' for the chance to be awake.
+Picture this we're running away, leave all this behind us.
+One more kiss we're drivin' away fuelin' up inside us.
+Talk to me, tell me all your secrets cause I want to be everything you need.
+Let's fall in love, I'm workin' overtime, workin' for the chance to be awake.
+Talk to me, tell me all your secrets cause I want to be everything you need.
+Don't need to take another minute cause I love it when you talk to me like that."""
+
+
+EXPECTED_FLORENCE = """The looking glass, so shiny and new
 How quickly the glamor fades
 I start spinning slipping out of time
 Was that the wrong pill to take?

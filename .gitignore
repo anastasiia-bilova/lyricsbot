@@ -88,6 +88,8 @@ bin/
 include/
 pip-selfcheck.json
 requirement.txt
+config.py
+*.svg
 
 *.sqlite3
 
@@ -97,3 +99,4 @@ requirement.txt
 .elasticbeanstalk/
 
 .DS_Store
+.vscode
