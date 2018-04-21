@@ -150,7 +150,7 @@ def webhook():
     Webhook.
     """
     bot.remove_webhook()
-    bot.set_webhook(url="https://glacial-springs-87704.herokuapp.com/" + TOKEN)
+    bot.set_webhook(url="https://intense-harbor-47746.herokuapp.com/" + TOKEN)
 
     return "!", 200
 
