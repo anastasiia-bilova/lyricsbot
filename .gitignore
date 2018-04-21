@@ -97,5 +97,7 @@ requirement.txt
 !.elasticbeanstalk/*.global.yml
 .elasticbeanstalk/
 
+config.py
+
 .DS_Store
 .vscode

@@ -39,7 +39,7 @@ except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
         update_user_state,
     )
     from lyricsbot.domains.genius.genius import get_song_text_from_genius
-
+# pylint: disable=invalid-name
 server = Flask(__name__)
 
 bot = telebot.TeleBot(TOKEN)  # pylint: disable=C0103
