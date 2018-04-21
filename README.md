@@ -18,7 +18,7 @@ Lyricsbot will find the text of your favorite song!
 Lyricsbot is a Telegram bot that allows the user to receive lyrics.
 Note: The song must be written in English.
 
-Touch [@GetSongLyricsBot](https://telegram.me/getsonglyricsbot).
+Touch [@GetSongsLyricsBot](https://telegram.me/getsongslyricsbot).
 
 All tokens and URLs are private because they are not available to users.
 

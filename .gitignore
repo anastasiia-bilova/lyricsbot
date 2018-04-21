@@ -88,7 +88,6 @@ bin/
 include/
 pip-selfcheck.json
 requirement.txt
-config.py
 *.svg
 
 *.sqlite3
