@@ -1,5 +1,5 @@
 beautifulsoup4==4.6.0
-ddt==1.1.1
+ddt==1.2.1
 Flask==0.12.2
 gunicorn==19.9.0
 psycopg2==2.7.3.2
