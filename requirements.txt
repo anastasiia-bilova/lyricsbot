@@ -2,6 +2,6 @@ beautifulsoup4==4.6.0
 ddt==1.2.1
 Flask==1.0
 gunicorn==19.9.0
-psycopg2==2.7.3.2
+psycopg2==2.8.3
 pyTelegramBotAPI==3.6.6
 requests==2.20.0
