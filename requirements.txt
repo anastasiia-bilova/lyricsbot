@@ -1,4 +1,4 @@
-beautifulsoup4==4.8.1
+beautifulsoup4==4.8.2
 ddt==1.2.2
 Flask==1.1.1
 gunicorn==20.0.4
