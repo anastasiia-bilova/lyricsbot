@@ -1,4 +1,4 @@
 coverage==5.0.4
-flake8==3.5.0
+flake8==3.7.9
 pycodestyle==2.5.0
 pylint==1.8.1
