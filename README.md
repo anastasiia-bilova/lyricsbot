@@ -1,6 +1,6 @@
 # lyricsbot
 
-Lyricsbot will find the text of your favorite song!
+Lyricsbot will find the lyrics of your favorite song!
 
 [![Release](https://img.shields.io/github/release/anastasia-bilova/lyricsbot.svg)](https://github.com/anastasia-bilova/lyricsbot/releases)
 ![Build](https://travis-ci.org/anastasia-bilova/lyricsbot.svg?branch=develop)
