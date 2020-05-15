@@ -9,8 +9,8 @@ from telebot import types
 from telebot.apihelper import ApiException
 
 try:
-    from config import TOKEN  # pylint: disable=relative-import
-    from database_settings import (  # pylint: disable=relative-import
+    from config import TOKEN  # pylint: disable=bad-option-value
+    from database_settings import (  # pylint: disable=bad-option-value
         create_song_data_table,
         create_user_state_table,
         get_author_song,
@@ -22,7 +22,7 @@ try:
         update_title_song,
         update_user_state,
     )
-    from domains.genius.genius import get_song_text_from_genius  # pylint: disable=relative-import
+    from domains.genius.genius import get_song_text_from_genius  # pylint: disable=bad-option-value
 # pylint:disable=bare-except
 except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     from lyricsbot.config import TOKEN
