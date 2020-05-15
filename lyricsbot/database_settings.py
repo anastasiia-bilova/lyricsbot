@@ -4,9 +4,9 @@ Settings of the database.
 import psycopg2
 
 try:
-    from config import URL  # pylint: disable=relative-import
-    from errors import DatabaseConnectionError  # pylint: disable=W0622,relative-import
-    from lyricsbot_utils import parse_url_db  # pylint: disable=relative-import
+    from config import URL  # pylint: disable=bad-option-value
+    from errors import DatabaseConnectionError  # pylint: disable=W0622,bad-option-value
+    from lyricsbot_utils import parse_url_db  # pylint: disable=bad-option-value
 # pylint:disable=bare-except
 except:  # noqa: E722 # Python 3.5 does not contain `ModuleNotFoundError`
     from lyricsbot.config import URL
