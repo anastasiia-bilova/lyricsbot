@@ -1,4 +1,4 @@
-coverage==5.5
-flake8==3.9.1
-pycodestyle==2.7.0
-pylint==2.8.1
+coverage==7.2.1
+flake8==6.0.0
+pycodestyle==2.10.0
+pylint==2.16.4
